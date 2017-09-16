@@ -1,7 +1,6 @@
 package org.samrt4j.chapter2.util;
 
 
-
 /**
  * 转型操作工具类
  */
@@ -69,6 +68,7 @@ public final class CastUtil {
 
     /**
      * 转为long型 （提供默认值）
+     *
      * @param obj
      * @param defaultValue
      * @return
@@ -89,5 +89,70 @@ public final class CastUtil {
         return longValue;
     }
 
+    /**
+     * 转为Int型
+     *
+     * @param obj
+     * @return
+     */
+    public static int castInt(Object obj) {
+        return CastUtil.castInt(obj, 0);
+    }
+
+    /**
+     * 转为Int型 （提供默认值）
+     *
+     * @param obj
+     * @param defaultValue
+     * @return
+     */
+    public static int castInt(Object obj, int defaultValue) {
+        int intValue = defaultValue;
+        if (obj != null) {
+            String strValue = CastUtil.castString(obj);
+            if (StringUtil.isNotEmpty(strValue)) {
+                try {
+                    intValue = Integer.parseInt(strValue);
+                } catch (NumberFormatException e) {
+                    intValue = defaultValue;
+                }
+            }
+        }
+
+        return intValue;
+    }
+
+    /**
+     * 转为Int型
+     *
+     * @param obj
+     * @return
+     */
+    public static boolean castBoolean(Object obj) {
+        return CastUtil.castBoolean(obj, false);
+    }
+
+    /**
+     * 转为Int型 （提供默认值）
+     *
+     * @param obj
+     * @param defaultValue
+     * @return
+     */
+    public static boolean castBoolean(Object obj, boolean defaultValue) {
+        boolean booleanValue = defaultValue;
+        if (obj != null) {
+            String strValue = CastUtil.castString(obj);
+            if (StringUtil.isNotEmpty(strValue)) {
+                try {
+                    booleanValue = Boolean.parseBoolean(strValue);
+                } catch (NumberFormatException e) {
+                    booleanValue = defaultValue;
+                }
+            }
+        }
+
+        return booleanValue;
+    }
 
 }
