@@ -1,7 +1,7 @@
 package org.samrt4j.chapter2.util;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
 
 import java.util.Collection;
 import java.util.Map;

@@ -1,5 +1,6 @@
 package org.samrt4j.chapter2.service;
 
+import org.samrt4j.chapter2.helper.DataBaseHelper;
 import org.samrt4j.chapter2.model.Customer;
 
 import java.util.List;
@@ -12,16 +13,18 @@ public class CustomerService {
 
     /**
      * 获取用户列表
+     *
      * @param
      * @return
      */
     public List<Customer> getCustomerList() {
-        //TODO
-        return null;
+        String sql = "SELECT * FROM customer";
+        return DataBaseHelper.queryEntityList(Customer.class, sql);
     }
 
     /**
      * 获取客户
+     *
      * @param id
      * @return
      */
@@ -33,6 +36,7 @@ public class CustomerService {
 
     /**
      * 创建客户
+     *
      * @param fieldMap
      * @return
      */
@@ -43,6 +47,7 @@ public class CustomerService {
 
     /**
      * 更新客户
+     *
      * @param fieldMap
      * @return
      */
@@ -54,6 +59,7 @@ public class CustomerService {
 
     /**
      * 删除客户
+     *
      * @param id
      * @return
      */
