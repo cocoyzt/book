@@ -29,8 +29,8 @@ public class CustomerService {
      * @return
      */
     public Customer getCustomer(long id) {
-        //TODO
-        return null;
+        String sql = "SELECT * FROM customer " + "WHERE id=?";
+        return DataBaseHelper.queryEntity(Customer.class, sql, id);
     }
 
 
@@ -41,8 +41,8 @@ public class CustomerService {
      * @return
      */
     public boolean createCustomer(Map<String, Object> fieldMap) {
-        //TODO
-        return false;
+
+        return DataBaseHelper.insertEntity(Customer.class, fieldMap);
     }
 
     /**
@@ -52,8 +52,8 @@ public class CustomerService {
      * @return
      */
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
-        //TODO
-        return false;
+
+        return DataBaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
 
@@ -64,8 +64,8 @@ public class CustomerService {
      * @return
      */
     public boolean deleteCustomer(long id) {
-        //TODO
-        return false;
+
+        return DataBaseHelper.deleteEntity(Customer.class, id);
     }
 }
 

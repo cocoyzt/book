@@ -11,13 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/customer_create")
+@WebServlet("/customer")
 public class CustomerCreateServlet extends HttpServlet {
 
     private CustomerService customerService;
 
+    @Override
+    public void init() throws ServletException {
+        customerService = new CustomerService();
+    }
+
     /**
      * 进入 创建客户 界面
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -26,12 +32,14 @@ public class CustomerCreateServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Customer> customerList = customerService.getCustomerList();
-        return;
+        req.setAttribute("customerList", customerList);
+        req.getRequestDispatcher("/WEB-INF/view/customer.jsp").forward(req, resp);
     }
 
 
     /**
      * 处理 创建客户 请求
+     *
      * @param var1
      * @param var2
      * @throws ServletException
